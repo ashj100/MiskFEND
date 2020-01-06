@@ -2,25 +2,18 @@ $(document).ready(function(){
   $('.modal').modal();
 
   
-
+*// create array  
   let cardClassesList = [
-    'fa-diamond',
-    'fa-diamond',
-    'fa-paper-plane-o',
-    'fa-paper-plane-o',
-    'fa-anchor',
-    'fa-anchor',
-    'fa-bolt',
-    'fa-bolt',
-    'fa-cube',
-    'fa-cube',
-    'fa-bomb',
-    'fa-bomb',
-    'fa-bicycle',
-    'fa-bicycle',
-    'fa-leaf',
-    'fa-leaf'
-  ];
+  'fa-diamond',
+  'fa-paper-plane-o',
+  'fa-anchor',
+  'fa-bolt',
+  'fa-cube',
+  'fa-bomb',
+  'fa-bicycle',
+  'fa-leaf',
+];
+cardClassesList = cardClassesList.concat(cardClassesList)
 
   let watch = new StopWatch();
 
@@ -84,21 +77,23 @@ $(document).ready(function(){
 
   
   function updateGrade() {
-    if(moves > 12) {
-      if(grade !== "Average") {
-        grade = "Average";
-        gradeSpan.innerText = grade;
-        starsList.removeChild(starsList.children[0]);
-      }
-    }
-    if(moves > 24) {
-      if(grade !== "Poor...") {
-        grade = "Poor...";
-        gradeSpan.innerText = grade;
-        starsList.removeChild(starsList.children[0]);
-      }
+  if (moves === 12) {
+    /* this block of code will be executed only if the moves equal to 12 */
+    if (grade !== "Average") {
+      grade = "Average";
+      gradeSpan.innerText = grade;
+      starsList.removeChild(starsList.children[0]);
     }
   }
+  if (moves === 24) {
+        /* this block of code will be executed only if the moves equal to 24 */
+    if (grade !== "Poor...") {
+      grade = "Poor...";
+      gradeSpan.innerText = grade;
+      starsList.removeChild(starsList.children[0]);
+    }
+  }
+}
 
   function clearDeck() {
     deck.innerHTML = '';
