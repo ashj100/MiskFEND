@@ -1,8 +1,8 @@
 $(document).ready(function(){
   $('.modal').modal();
 
-  
-*// create array  
+/*  set game variable */
+
   let cardClassesList = [
   'fa-diamond',
   'fa-paper-plane-o',
@@ -47,6 +47,7 @@ cardClassesList = cardClassesList.concat(cardClassesList)
   movesText.innerText = moves;
   timeText.innerText = watch.getTimeString();
 
+// Shuffle function from http://stackoverflow.com/a/2450976
   function shuffle(array) {
     var currentIndex = array.length, temporaryValue, randomIndex;
     while (currentIndex !== 0) {
@@ -58,6 +59,8 @@ cardClassesList = cardClassesList.concat(cardClassesList)
     }
     return array;
   }
+
+   // creates li cards
 
   function createCard(card_class) {
     let li = document.createElement('li');
@@ -112,7 +115,7 @@ cardClassesList = cardClassesList.concat(cardClassesList)
     document.querySelectorAll('.card').forEach(function(card) {
       card.addEventListener('click', function() {
         if(didGameStart === false) {
-          
+           // set timer first click
           didGameStart = true;
           watch.startTimer(function(){
             timeText.innerText = watch.getTimeString();
@@ -215,7 +218,7 @@ cardClassesList = cardClassesList.concat(cardClassesList)
 
     modal_instance.open();
   }
-
+ /* Resets the game */
   function resetGame(e) {
     if(e && e.preventDefault) { e.preventDefault(); }
     clearDeck();
@@ -248,7 +251,7 @@ cardClassesList = cardClassesList.concat(cardClassesList)
     msgText.innerText = message;
     setTimeout(function(){ msgText.innerText = ''; }, 1725);
   }
-
+/* show cards then remove after timeout */
   function flash_cards() {
     document.querySelectorAll('.card').forEach(function(card) {
       card.classList.add('open', 'show');
